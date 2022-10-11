@@ -20,7 +20,7 @@ spec:
       - name: regcred
       containers:
       - name: front-end-main
-        image: docker.nexus.mathmarcoux.ca/__APPLICATION__:__TAG__
+        image: docker.nexus.mathmarcoux.ca/VAR_REPOSITORY:VAR_TAG
         ports:
         - containerPort: 3000
 

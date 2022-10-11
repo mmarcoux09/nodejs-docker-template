@@ -27,16 +27,17 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.NEXUS_HOST }}/${{ github_repository }}:{{ github_ref_name }}
+          tags: ${{ secrets.NEXUS_HOST }}/${{ github.repository }}:{{ github.ref_name }}
 
   deploy-to-production-infrastructure:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Replace Deployment Application Label
+        shell: cmd
         run: |
-          sed -i 's/__APPLICATION__/${{ github_repository }}/g' kubernetes/deployment.yml
-          sed -i 's/__TAG__/${{ github_ref_name }}/g' kubernetes/deployment.yml
+          sed -i 's|VAR_REPOSITORY|${{ github.repository }}|g' kubernetes/deployment.yml
+          sed -i 's|VAR_TAG|${{ github.ref_name }}|g' kubernetes/deployment.yml
       - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
