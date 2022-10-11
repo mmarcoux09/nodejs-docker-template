@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Replace Deployment Application Label
-        shell: cmd
+        shell: bash
         run: |
           sed -i 's|VAR_REPOSITORY|${{ github.repository }}|g' kubernetes/deployment.yml
           sed -i 's|VAR_TAG|${{ github.ref_name }}|g' kubernetes/deployment.yml
