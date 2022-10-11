@@ -1,4 +1,4 @@
-import logo from './as_logo.png';
+import logo from './as_logo_yellow.png';
 import './App.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          AngelSoftwares
+          AngelYellowSoftwares
         </a>
       </header>
     </div>
